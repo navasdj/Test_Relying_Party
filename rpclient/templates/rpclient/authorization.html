@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="uft-8"/>
+    <title>Authorization Request</title>
+  </head>
+  <body>
+	<h1>Relying Party for testing</h1>
+	<h3>Please choose RP and IdP:<h3>
+	<form name="RPform" action="/rpclient/requestcode/" method="post">
+		<table frame="box">
+			<tr align="left">
+				<th>
+					<h3>RP available:<h3> 
+						<select name="RPs">
+							{% for H in listRP %}
+							<option value="{{ H.id }}">{{ H.host }}</option>  
+							{% endfor %}
+						</select>				
+				</th>
+				<th aign="top">
+					<h3>IdP available:<h3>
+					<select name="IdPs">
+						{% for I in listIdP %}
+						<option value="{{ I.id }}">{{ I.host }}</option>
+						{% endfor %}
+					</select>				
+				</th>
+			</tr>
+		</table>
+		{% csrf_token %}
+		<br><input type="submit" value="Authentication Request" />
+	</form>
+	<br><br><br>
+	<form action="/rpclient/" method="post">
+		{% csrf_token %}
+		<input type="submit" value="Start over" />
+	</form>
+  </body>
+</html>
+
+
+
+

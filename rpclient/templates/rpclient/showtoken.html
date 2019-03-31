@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="uft-8"/>
+    <title>Request token</title>
+  </head>
+  <body>
+        <h1>Relying Party for testing</h1>
+        <h3>Content of the token received:<h3>
+	<table border="1" style="width:90%" >
+        	<tr>
+                	<th> Item </th>
+	                <th> Value </th>
+        	</tr>
+		<tr>
+                        <td>IdP url</td>
+                        <td>{{ pt }}</td>
+                </tr>
+		<tr bgcolor="#808080">
+                        <th> Token Header </th>
+                        <th> Content </th>
+                </tr>
+                <tr>
+                {% for x,y in HeaderTokenID.items %}
+                        <td>{{ x }}</td>
+                        <td>{{ y }}</td>
+                </tr>
+                {% endfor %}
+		<tr bgcolor="#808080">
+                        <th> Token Access </th>
+                        <th> Content </th>
+                </tr>		
+		<tr>
+		{% for x,y in tokenj.items %}
+			{% if x != 'id_token' %}
+	        		<td>{{ x }}</td>
+		        	<td>{{ y }}</td>
+			{% endif %}
+		</tr>
+		{% endfor %}
+		<tr bgcolor="#808080">
+                        <th> Body of ID_token </th>
+                        <th> Claims </th>
+                </tr>
+                <tr>
+                {% for x,y in BodyTokenID.items %}
+                        <td>{{ x }}</td>
+                        <td>{{ y }}</td>
+                </tr>
+                {% endfor %}
+	</table>
+	<form action="/rpclient/" method="post">
+		{% csrf_token %}
+		<input type="submit" value="Start over" />
+	</form>
+  </body>
+</html>
+

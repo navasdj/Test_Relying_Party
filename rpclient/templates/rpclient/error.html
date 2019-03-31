@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="uft-8"/>
+    <title>Authorization Request</title>
+  </head>
+  <body>
+	<h1>Relying Party for testing</h1>
+	<h2>An error has ocurred:</h2>
+        <h3> {{ tipoE }} <h3>
+	<form action="/rpclient/" method="post">
+		{% csrf_token %}
+		<input type="submit" value="Start over" />
+	</form>
+ </body>	
+</html>
